@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
 
@@ -22,10 +23,10 @@ class Header extends Component {
             <div>
                 <ul className="nav nav-tabs bg-primary">
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Acceuil</a>
+                        <Link className="nav-link" to={"/"}>Acceuil</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Ressources</a>
+                        <Link className="nav-link" to={"/ressources"}>Ressources</Link>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link"
