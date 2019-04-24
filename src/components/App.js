@@ -1,11 +1,11 @@
 import React from 'react';
+import Header from '../containers/header'
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      salut
+      <Header />
     </div>
   );
 }
 
-export default App;

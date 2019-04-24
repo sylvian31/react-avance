@@ -11,7 +11,6 @@ import reducers from "./reducers";
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
-
 ReactDOM.render(
     <Provider
         store={createStoreWithMiddleware(
