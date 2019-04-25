@@ -1,1 +1,2 @@
 export const SET_AUTH = "SET_AUTH";
+export const INCREMENT_COUNT_ACTION = "INCREMENT_COUNT_ACTION"

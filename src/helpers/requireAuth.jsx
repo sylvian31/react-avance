@@ -11,12 +11,6 @@ export default function (ChildComponent) {
             }
         }
 
-        // static getDerivedStateFromProps(props){
-        //     if (!this.props.isLogged) {
-        //         this.redirect();
-        //     }
-        // }
-
         getSnapshotBeforeUpdate(prevProps, prevState){
             if (!this.props.isLogged) {
                 this.redirect();
