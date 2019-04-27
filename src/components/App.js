@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../containers/header'
 import '../style.css';
 import Home from './home'
-import Ressources from './ressources'
+import Ressources from '../containers/ressources/ressources'
 import { Route, Switch } from 'react-router-dom'
 import RequireAuth from '../helpers/requireAuth'
 import TodoApp from './todo-app'
