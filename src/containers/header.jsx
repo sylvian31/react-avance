@@ -29,9 +29,13 @@ class Header extends Component {
                         <Link className="nav-link" to={"/ressources"}>Ressources</Link>
                     </li>
                     <li className="nav-item">
+                        <Link className="nav-link" to={"/todo-app"}>Todo App</Link>
+                    </li>
+                    <li className="nav-item">
                         <a className="nav-link"
                             href="#"
                             onClick={this.onClickAuth}
+                            id="authLink"
                         >
                             {this.renderAuthLabel()}
                         </a>
