@@ -6,6 +6,7 @@ import Ressources from '../containers/ressources/ressources'
 import { Route, Switch } from 'react-router-dom'
 import RequireAuth from '../helpers/requireAuth'
 import TodoApp from './todo-app'
+import Signin from './signin'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/ressources" component={RequireAuth(Ressources)} />
           <Route exact path="/todo-app" component={TodoApp} />
+          <Route exact path="/signin" component={Signin} />
         </Switch>
       </div>
     </div>

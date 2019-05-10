@@ -23,7 +23,7 @@ class Header extends Component {
             <div>
                 <ul className="nav nav-tabs bg-primary">
                     <li className="nav-item">
-                        <Link className="nav-link" to={"/"}>Acceuil</Link>
+                        <Link className="nav-link" to={"/"}>Accueil</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to={"/ressources"}>Ressources</Link>
@@ -32,13 +32,7 @@ class Header extends Component {
                         <Link className="nav-link" to={"/todo-app"}>Todo App</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link"
-                            href="#"
-                            onClick={this.onClickAuth}
-                            id="authLink"
-                        >
-                            {this.renderAuthLabel()}
-                        </a>
+                        <Link className="nav-link" to={"/signin"}>Signin</Link>
                     </li>
                 </ul>
             </div>

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { addRessource } from '../../actions/index'
 import { getRessourceList, getContainOneList, getPrimeNumberList, getSpecialNumbersList } from './ressources-selector'
 
-class componentName extends Component {
+class Ressources extends Component {
 
     renderRessources = ressources => {
         return (
@@ -71,4 +71,4 @@ const mapDispatchToProps = (dispatch) => ({
     ...bindActionCreators({ addRessource }, dispatch),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(componentName)
+export default connect(mapStateToProps, mapDispatchToProps)(Ressources)
