@@ -30,3 +30,7 @@ export const getSpecialNumbersList = createSelector(
         return lodash.intersection(containOneList, primeNumberList);
     }
 )
+
+export const getRessourceMessage = state => {
+    return state.ressourcesReducer.message
+}

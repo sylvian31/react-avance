@@ -1,10 +1,21 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { addRessource } from '../../actions/index'
-import { getRessourceList, getContainOneList, getPrimeNumberList, getSpecialNumbersList } from './ressources-selector'
+import { addRessource, getSecureRessources } from '../../actions/index'
+import {
+    getRessourceList,
+    getContainOneList,
+    getPrimeNumberList,
+    getSpecialNumbersList,
+    getRessourceMessage
+} from './ressources-selector'
 
 class Ressources extends Component {
+
+    constructor(props) {
+        super(props);
+        this.props.getSecureRessources();
+    }
 
     renderRessources = ressources => {
         return (
@@ -50,6 +61,7 @@ class Ressources extends Component {
                         {this.renderRessources(this.props.ressourceSpecialNumbersList)}
                     </ul>
                 </div>
+                {this.props.messageSecure}
             </div>
         )
     }
@@ -62,13 +74,14 @@ const mapStateToProps = (state) => {
         ressourceList: getRessourceList(state),
         ressourceContainOneList: getContainOneList(state),
         ressourcePrimeNumberList: getPrimeNumberList(state),
-        ressourceSpecialNumbersList: getSpecialNumbersList(state)
+        ressourceSpecialNumbersList: getSpecialNumbersList(state),
+        messageSecure: getRessourceMessage(state)
 
     }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    ...bindActionCreators({ addRessource }, dispatch),
+    ...bindActionCreators({ addRessource, getSecureRessources }, dispatch),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Ressources)

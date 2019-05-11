@@ -20,7 +20,7 @@ export default function (ChildComponent) {
 
 
         render() {
-            return <ChildComponent />
+            return this.props.isLogged && <ChildComponent />
         }
 
         componentDidUpdate(){

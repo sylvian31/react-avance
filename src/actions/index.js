@@ -1,4 +1,4 @@
-import { SET_AUTH, INCREMENT_COUNT_ACTION, ADD_RESSOURCE } from './action-types';
+import { SET_AUTH, INCREMENT_COUNT_ACTION, ADD_RESSOURCE, GET_RESSOURCE } from './action-types';
 import axios from 'axios';
 const BASE_URL = "http://localhost:3090"
 
@@ -26,10 +26,10 @@ export function signin({ email, password }, history) {
     }
 }
 
-export function signout(){
-    return function(dispatch){
+export function signout() {
+    return function (dispatch) {
         dispatch({ type: SET_AUTH, payload: false });
-        localStorage.removeItem('token');      
+        localStorage.removeItem('token');
     }
 }
 
@@ -42,6 +42,18 @@ export function signup({ email, password }, history) {
             localStorage.setItem('token', response.data.token);
             dispatch({ type: SET_AUTH, payload: true });
             history.push('/ressources')
+        }).catch((err) => {
+            console.log("error");
+        })
+    }
+}
+
+export function getSecureRessources() {
+    return function (dispatch) {
+        axios.get(`${BASE_URL}/secure`, {
+            headers: { authorization: localStorage.getItem('token') }
+        }).then((response) => {
+            dispatch({ type: GET_RESSOURCE, payload: response.data.message });
         }).catch((err) => {
             console.log("error");
         })

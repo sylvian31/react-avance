@@ -1,7 +1,8 @@
-import { ADD_RESSOURCE } from '../actions/action-types'
+import { ADD_RESSOURCE, GET_RESSOURCE } from '../actions/action-types'
 
 const initalState = {
-    ressourceList: [0]
+    ressourceList: [0],
+    message: ""
 }
 
 export default function RessourceReducer(state = initalState, action) {
@@ -11,7 +12,13 @@ export default function RessourceReducer(state = initalState, action) {
             return {
                 ressourceList:
                     [...state.ressourceList, state.ressourceList[state.ressourceList.length - 1] + 1]
+            };
+        case GET_RESSOURCE:
+            return {
+                ...state,
+                message: action.payload
             }
+
         default:
             return state;
     }
