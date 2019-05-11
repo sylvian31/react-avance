@@ -8,21 +8,31 @@ import thunk from "redux-thunk";
 import reducers from "./reducers";
 import { BrowserRouter } from 'react-router-dom'
 import { actionCounter } from './middlewares/action-counter'
+import { SET_AUTH } from './actions/action-types'
+
 const invariant = require("redux-immutable-state-invariant").default();
 
 const createStoreWithMiddleware = applyMiddleware(
-    thunk, 
+    thunk,
     actionCounter,
     invariant
-    )(createStore);
+)(createStore);
+
+const store = createStoreWithMiddleware(
+    reducers,
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+const token = localStorage.getItem('token');
+if (token) {
+    store.dispatch({ type: SET_AUTH, payload: true });
+}
+
 
 ReactDOM.render(
     <Provider
-        store={createStoreWithMiddleware(
-            reducers,
-            window.__REDUX_DEVTOOLS_EXTENSION__ &&
-            window.__REDUX_DEVTOOLS_EXTENSION__()
-        )}
+        store={store}
     >
         <BrowserRouter>
             <App />
