@@ -28,6 +28,7 @@ export function signin({ email, password }, history) {
             dispatch({ type: SET_AUTH, payload: true });
             history.push('/ressources')
         }).catch((err) => {
+            dispatch(parseError(err.response.data.message))
             console.log("error");
         })
     }
