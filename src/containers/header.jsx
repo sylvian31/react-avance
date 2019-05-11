@@ -1,21 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions'
 import { Link } from 'react-router-dom'
+import { signout as signoutAction } from '../actions'
+import { bindActionCreators } from 'redux'
 
 class Header extends Component {
 
 
-    onClickAuth = () => {
-        this.props.setAuth(!this.props.isLogged);
-    };
 
-    renderAuthLabel = () => {
+    renderAuthLink = () => {
         if (this.props.isLogged) {
-            return "Deconnexion";
+            return (
+                < li className="nav-item" >
+                    <Link className="nav-link" onClick={this.handleClickSignout} to={"/"}>Deconnexion</Link>
+                </li >
+            )
         } else {
-            return "Connexion"
+            return (
+                < li key={1} className="nav-item" >
+                    <Link className="nav-link" to={"/signin"}>Connexion</Link>
+                </li >
+            )
         }
+    }
+
+    handleClickSignout = () => {
+        this.props.signoutAction();
     }
 
     render() {
@@ -31,9 +41,7 @@ class Header extends Component {
                     <li className="nav-item">
                         <Link className="nav-link" to={"/todo-app"}>Todo App</Link>
                     </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to={"/signin"}>Signin</Link>
-                    </li>
+                    {this.renderAuthLink()}
                 </ul>
             </div>
         )
@@ -46,4 +54,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, actions)(Header)
+const mapDispatchToProps = (dispatch) => ({
+    ...bindActionCreators({ signoutAction }, dispatch),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

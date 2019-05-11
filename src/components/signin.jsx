@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from "redux-form"
 import { connect } from 'react-redux'
+import { signin as signinAction } from '../actions'
+import { bindActionCreators } from 'redux'
 
 const FIELDS = {
     email: 'email',
@@ -9,8 +11,8 @@ const FIELDS = {
 
 class Signin extends Component {
 
-    handleSubmit() {
-        //todo
+    handleSubmit = (credentials) => {
+        this.props.signinAction(credentials, this.props.history);
     }
 
     render() {
@@ -50,6 +52,10 @@ class Signin extends Component {
     }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+    ...bindActionCreators({ signinAction }, dispatch),
+})
+
 
 const signinForm = reduxForm({
     form: 'signin',
@@ -57,4 +63,4 @@ const signinForm = reduxForm({
 })(Signin)
 
 
-export default connect(null, null)(signinForm)
+export default connect(null, mapDispatchToProps)(signinForm)
