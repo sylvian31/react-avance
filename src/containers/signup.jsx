@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Field, reduxForm } from "redux-form"
 import { connect } from 'react-redux'
 import { signup as signupAction } from '../actions'
-import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux';
+import * as validations from "../validations"
 
 const FIELDS = {
     email: 'email',
@@ -23,6 +24,9 @@ class Signup extends Component {
                 <fieldset className="col-md-4 form-group">
                     <label htmlFor={field.id} className="bmd-label-floating">{field.label}</label>
                     <input {...field.input} id={field.id} type={field.type} className="form-control" />
+                    {field.meta.touched &&
+                        field.meta.error &&
+                        <span className="error">{field.meta.error}</span>}
                 </fieldset>
             </div>
         );
@@ -64,6 +68,14 @@ class Signup extends Component {
     }
 }
 
+function validate(formValues) {
+    const errors = {};
+    errors.email = validations.validateEmail(formValues.email);
+    errors.password = validations.validateNotEmpty(formValues.password)
+    errors.secondPassword = validations.validateEqual(formValues.password, formValues.secondPassword)
+    return errors;
+}
+
 const mapDispatchToProps = (dispatch) => ({
     ...bindActionCreators({ signupAction }, dispatch),
 })
@@ -71,7 +83,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const signupForm = reduxForm({
     form: 'signup',
-    fields: Object.keys(FIELDS)
+    fields: Object.keys(FIELDS),
+    validate
 })(Signup)
 
 
