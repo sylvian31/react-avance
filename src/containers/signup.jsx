@@ -59,7 +59,6 @@ class Signup extends Component {
                     label="Password (again)"
 
                 />
-
                 <div className="row justify-content-md-center">
                     <button type="submit" className="btn btn-primary btn-raised">Connexion</button>
                 </div>

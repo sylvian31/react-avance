@@ -33,6 +33,17 @@ export function signout(){
     }
 }
 
-export function signup(){
-    
+export function signup({ email, password }, history) {
+    return function (dispatch) {
+        axios.post(`${BASE_URL}/signup`, {
+            email, //  == email: email
+            password // == password : password
+        }).then((response) => {
+            localStorage.setItem('token', response.data.token);
+            dispatch({ type: SET_AUTH, payload: true });
+            history.push('/ressources')
+        }).catch((err) => {
+            console.log("error");
+        })
+    }
 }
