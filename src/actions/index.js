@@ -32,3 +32,7 @@ export function signout(){
         localStorage.removeItem('token');      
     }
 }
+
+export function signup(){
+    
+}
