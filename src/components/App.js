@@ -6,7 +6,7 @@ import Ressources from '../containers/ressources/ressources'
 import { Route, Switch } from 'react-router-dom'
 import RequireAuth from '../helpers/requireAuth'
 import TodoApp from './todo-app'
-import Signin from './signin'
+import Signin from '../containers/signin'
 
 export default function App() {
   return (
