@@ -1,4 +1,11 @@
-import { SET_AUTH, INCREMENT_COUNT_ACTION, ADD_RESSOURCE, GET_RESSOURCE } from './action-types';
+import {
+    SET_AUTH,
+    INCREMENT_COUNT_ACTION,
+    ADD_RESSOURCE,
+    GET_RESSOURCE,
+    PARSE_ERROR,
+    RESET_ERROR
+} from './action-types';
 import axios from 'axios';
 const BASE_URL = "http://localhost:3090"
 
@@ -58,4 +65,12 @@ export function getSecureRessources() {
             console.log("error");
         })
     }
+}
+
+export function parseError(errorMessage) {
+    return { type: PARSE_ERROR, payload: errorMessage }
+}
+
+export function resetError() {
+    return { type: RESET_ERROR }
 }

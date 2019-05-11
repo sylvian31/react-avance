@@ -2,3 +2,5 @@ export const SET_AUTH = "SET_AUTH";
 export const INCREMENT_COUNT_ACTION = "INCREMENT_COUNT_ACTION"
 export const ADD_RESSOURCE = "ADD_RESSOURCE"
 export const GET_RESSOURCE = "GET_RESSOURCE"
+export const PARSE_ERROR = "PARSE_ERROR"
+export const RESET_ERROR = "RESET_ERROR"
